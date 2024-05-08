@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FinanceTogether",
-    "slug": "FinanceTogether",
+    "slug": "financetogether",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ab19e017-dece-43ed-a346-762a298705dc"
+      }
+    },
+    "owner": "niliak"
   }
 }
