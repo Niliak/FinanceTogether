@@ -43,6 +43,8 @@ export const GuildScreen = () => {
         >
           <Text style={styles.leaderboardText}>Leaderboard</Text>
         </TouchableOpacity>
+
+        {/* leader board modal popup */}
         <Modal
           animationType="slide"
           transparent={true}
@@ -89,16 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flex: 1,
   },
-  userInformationModal: {
-    flexDirection: "row",
-  },
   userNameLvl: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 10,
-    flex: 1,
-  },
-  userNameLvlModal: {
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 10,

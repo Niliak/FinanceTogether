@@ -38,12 +38,6 @@ const styles = StyleSheet.create({
     padding: 16,
     flex: 1,
   },
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-    alignSelf: "center",
-    padding: 10,
-  },
   post: {
     flexDirection: "row",
     margin: 10,

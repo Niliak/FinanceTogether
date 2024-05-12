@@ -6,9 +6,7 @@ import { users } from "../components/users";
 
 export const LeaderboardRanking = () => {
   let ranking = 0;
-  let numOfUsers = users.length;
   let unrankedUsers = users;
-  console.log("num of users: ", numOfUsers);
   let rankedUsers = unrankedUsers.sort(
     (firstUser, secondUser) => secondUser.level - firstUser.level
   );
@@ -24,6 +22,7 @@ export const LeaderboardRanking = () => {
   const renderUser = ({ item }) => {
     return (
       <View style={styles.userInformationModal}>
+        {/* to display the rank numbers */}
         <Text style={styles.ranking}>
           {ranking !== 4 ? (ranking += 1) : (ranking = 1)}
         </Text>
@@ -35,7 +34,7 @@ export const LeaderboardRanking = () => {
       </View>
     );
   };
-  console.log("refreshing leaderboard");
+
   return (
     <>
       <FlatList

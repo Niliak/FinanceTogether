@@ -1,27 +1,14 @@
-import React, { useState, useCallback } from "react";
-import {
-  SafeAreaView,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  RefreshControl,
-  ScrollView,
-  FlatList,
-} from "react-native";
-import { Octicons, Entypo } from "@expo/vector-icons";
-import { TextInput } from "react-native-paper";
+import React from "react";
+import { SafeAreaView, View, StyleSheet, Text } from "react-native";
 
-import { Spacer } from "../components/spacer";
 import { CommentsSection } from "../features/CommentsSection";
-import { userComments } from "../components/userComments";
 
 export const ForumPostScreen = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <Text style={styles.postTitle}>Tips for increasing savings</Text>
-        <Spacer />
+        <View style={styles.spacer} />
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           dapibus ac lectus eu condimentum. Etiam vel tellus congue, cursus elit
@@ -34,7 +21,7 @@ export const ForumPostScreen = () => {
           ante est, vehicula ac velit in, condimentum tincidunt tortor. Mauris
           pellentesque vestibulum ullamcorper. Suspendisse sit amet eros ipsum.
         </Text>
-        <Spacer />
+        <View style={styles.spacer} />
 
         <CommentsSection />
       </View>
@@ -50,14 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: "left",
   },
-  userCommentContainer: {
-    flexDirection: "row",
-  },
-  addCommentContainer: {
-    flexDirection: "row",
-  },
-  textInput: {
-    flex: 0.8,
-    height: 30,
+  spacer: {
+    height: 40,
   },
 });

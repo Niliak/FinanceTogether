@@ -8,10 +8,10 @@ import dayjs from "dayjs";
 import DropDownPicker from "react-native-dropdown-picker";
 
 import { history } from "../components/history";
-import { Spacer } from "../components/spacer";
 import { users } from "../components/users";
 
 let addTransactionCount = 0;
+// find the user in the users database
 let mainUser = users.find((user) => {
   if (user.username === "John Doe") return user;
 });
@@ -21,8 +21,6 @@ function levelUpSystem() {
   if (addTransactionCount % 5 === 0 && addTransactionCount > 0) {
     mainUser.level += 1;
   }
-  console.log("trx count: ", addTransactionCount);
-  console.log("level: ", mainUser.level);
 }
 
 export const AddTransactionScreen = ({ addTransaction, clearTransaction }) => {
@@ -72,7 +70,7 @@ export const AddTransactionScreen = ({ addTransaction, clearTransaction }) => {
           },
         ]}
       />
-      <View style={{ height: 20 }} />
+      <View style={styles.spacerSmall} />
       <View style={styles.inputField}>
         <Text style={{ flex: 0.3, paddingTop: 8 }}>Date</Text>
         <TouchableOpacity
@@ -91,6 +89,7 @@ export const AddTransactionScreen = ({ addTransaction, clearTransaction }) => {
             setDateModalVisible(!dateModalVisible);
           }}
         >
+          {/* popup modal to select date */}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <DateTimePicker
@@ -108,7 +107,7 @@ export const AddTransactionScreen = ({ addTransaction, clearTransaction }) => {
           </View>
         </Modal>
       </View>
-      <View style={{ height: 20 }} />
+      <View style={styles.spacerSmall} />
       <View style={styles.categoryInputField}>
         <Text style={styles.categoryLabel}>Category</Text>
         <DropDownPicker
@@ -145,12 +144,12 @@ export const AddTransactionScreen = ({ addTransaction, clearTransaction }) => {
         />
       </View>
 
-      <Spacer />
+      <View style={styles.spacerBig} />
       <Text style={{ textAlign: "center", fontSize: 50 }}>
         $ {amount === null || amount === "" ? "0.00" : amount}
       </Text>
 
-      <Spacer />
+      <View style={styles.spacerBig} />
       <Modal
         animationType="slide"
         transparent={true}
@@ -201,35 +200,19 @@ export const AddTransactionScreen = ({ addTransaction, clearTransaction }) => {
             transactionName === null ||
             amount === ""
               ? setVerificationModalVisible(true)
-              : (console.log("current transaction: ", currentTransaction),
-                console.log("date: ", date),
-                console.log("category: ", category),
-                console.log("transactionName: ", transactionName),
-                console.log("amount: ", amount),
-                console.log("transactionType: ", transactionType),
-                setCurrentTransaction(
+              : (setCurrentTransaction(
                   (currentTransaction.date = dayjs(date).format("DD MMM YYYY")),
                   (currentTransaction.category = category),
                   (currentTransaction.transactionName = transactionName),
                   (currentTransaction.amount = amount),
                   (currentTransaction.transactionType = transactionType)
                 ),
-                console.log("current transaction: ", currentTransaction),
                 history.push(currentTransaction),
-                console.log("history: ", history),
-                //console.log("history in add transaction screen: ", history);
                 setCategory(null),
                 setTransactionName(null),
                 numpadRef.current.clearAll(),
                 setAmount(null),
                 setType(null),
-                // setCurrentTransaction(
-                //   (currentTransaction.date = dayjs(date).format("DD MMM YYYY")),
-                //   (currentTransaction.category = category),
-                //   (currentTransaction.transactionName = transactionName),
-                //   (currentTransaction.amount = amount),
-                //   (currentTransaction.transactionType = transactionType)
-                // );
                 setCurrentTransaction({
                   date: date,
                   category: "",
@@ -237,17 +220,7 @@ export const AddTransactionScreen = ({ addTransaction, clearTransaction }) => {
                   amount: "",
                   transactionType: "",
                 }),
-                levelUpSystem(),
-                console.log("addTransactionCount: ", addTransactionCount),
-                console.log(
-                  "current transaction after confirm button: ",
-                  currentTransaction
-                ),
-                console.log("date: ", date),
-                console.log("category: ", category),
-                console.log("transactionName: ", transactionName),
-                console.log("amount: ", amount),
-                console.log("transactionType: ", transactionType));
+                levelUpSystem());
           }}
           style={styles.confirmButton}
         >
@@ -315,14 +288,16 @@ const styles = StyleSheet.create({
     maxWidth: 250,
     marginLeft: 34,
   },
-  label: {
-    padding: 0,
-    alignSelf: "flex-start",
-  },
   categoryLabel: {
     padding: 0,
   },
   categoryInputField: {
     flexDirection: "row",
+  },
+  spacerSmall: {
+    height: 20,
+  },
+  spacerBig: {
+    height: 40,
   },
 });

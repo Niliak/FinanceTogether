@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { SafeAreaView, View, Text, StyleSheet } from "react-native";
 
-import { Spacer } from "../components/spacer";
-import { history } from "../components/history";
 import { CalculateBudget } from "../features/CalculateBudget";
 
 export const BudgetCategoriesScreen = () => {
@@ -18,7 +10,7 @@ export const BudgetCategoriesScreen = () => {
         <View style={styles.topPart}>
           <Text style={styles.title}>Budget Categories</Text>
         </View>
-
+        {/* display different budget category cards */}
         <CalculateBudget budgetCategory="food" budget={300} />
         <CalculateBudget budgetCategory="shopping" budget={150} />
         <CalculateBudget budgetCategory="others" budget={200} />
@@ -38,17 +30,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     flex: 0.9,
-  },
-  budget: {
-    padding: 16,
-  },
-  budgetContainer: {
-    flexDirection: "row",
-    paddingBottom: 10,
-  },
-  surface: {
-    padding: 8,
-    margin: 10,
-    height: 60,
   },
 });

@@ -16,9 +16,7 @@ function calculateTotalIncome() {
 
   incomeArray.forEach((transaction) => {
     totalIncome += parseFloat(transaction.amount);
-    // console.log("add income transaction");
   });
-  console.log("totalIncome: ", totalIncome);
 }
 
 function calculateTotalExpense() {
@@ -28,16 +26,13 @@ function calculateTotalExpense() {
 
   expenseArray.forEach((transaction) => {
     totalExpense += parseFloat(transaction.amount);
-    // console.log("add expense transaction");
   });
-  console.log("totalExpense: ", totalExpense);
 }
 
 function calculateIncomeExpenseNetTotal() {
   calculateTotalIncome();
   calculateTotalExpense();
   netTotal = totalIncome - totalExpense;
-  console.log("netTotal: ", netTotal);
 }
 
 export const IncomeExpenseNetTotal = () => {
@@ -47,22 +42,20 @@ export const IncomeExpenseNetTotal = () => {
   calculateIncomeExpenseNetTotal();
 
   return (
-    <View style={styles.topPart}>
-      <View style={styles.container}>
-        <View>
-          <Text>Income</Text>
-          <Text style={styles.income}>${totalIncome.toFixed(2)}</Text>
-        </View>
-        <View>
-          <Text>Expense</Text>
-          <Text style={styles.expense}>${totalExpense.toFixed(2)}</Text>
-        </View>
-        <View>
-          <Text>Net Total</Text>
-          <Text style={{ color: netTotal >= 0 ? "green" : "red" }}>
-            ${netTotal.toFixed(2)}
-          </Text>
-        </View>
+    <View style={styles.container}>
+      <View>
+        <Text>Income</Text>
+        <Text style={styles.income}>${totalIncome.toFixed(2)}</Text>
+      </View>
+      <View>
+        <Text>Expense</Text>
+        <Text style={styles.expense}>${totalExpense.toFixed(2)}</Text>
+      </View>
+      <View>
+        <Text>Net Total</Text>
+        <Text style={{ color: netTotal >= 0 ? "green" : "red" }}>
+          ${netTotal.toFixed(2)}
+        </Text>
       </View>
     </View>
   );
@@ -80,8 +73,4 @@ const styles = StyleSheet.create({
   expense: {
     color: "red",
   },
-  netTotal: {
-    color: netTotal >= 0 ? "green" : "red",
-  },
-  topPart: {},
 });

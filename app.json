@@ -31,6 +31,12 @@
         "projectId": "ab19e017-dece-43ed-a346-762a298705dc"
       }
     },
-    "owner": "niliak"
+    "owner": "niliak",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ab19e017-dece-43ed-a346-762a298705dc"
+    }
   }
 }

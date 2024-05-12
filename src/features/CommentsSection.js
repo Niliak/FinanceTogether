@@ -5,7 +5,7 @@ import {
   StyleSheet,
   FlatList,
   RefreshControl,
-  ScrollView,
+  KeyboardAvoidingView,
   TouchableOpacity,
 } from "react-native";
 import { TextInput } from "react-native-paper";
@@ -47,29 +47,35 @@ export const CommentsSection = () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         style={{ flexGrow: 0 }}
-        contentContainerStyle={{ paddingBottom: 140 }}
+        contentContainerStyle={{ paddingBottom: 0 }}
       />
 
-      <View style={styles.addCommentContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            userComments.push({
-              username: "John Doe",
-              comment: newComment,
-            });
-            setNewComment("");
-          }}
-        >
-          <Entypo name="plus" size={24} color="black" />
-        </TouchableOpacity>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={setNewComment}
-          mode="outlined"
-          value={newComment}
-          placeholder="Add a comment..."
-        />
-      </View>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={styles.container}
+        keyboardVerticalOffset={100}
+      >
+        <View style={styles.addCommentContainer}>
+          <TouchableOpacity
+            onPress={() => {
+              userComments.push({
+                username: "John Doe",
+                comment: newComment,
+              });
+              setNewComment("");
+            }}
+          >
+            <Entypo name="plus" size={24} color="black" />
+          </TouchableOpacity>
+          <TextInput
+            style={styles.textInput}
+            onChangeText={setNewComment}
+            mode="outlined"
+            value={newComment}
+            placeholder="Add a comment..."
+          />
+        </View>
+      </KeyboardAvoidingView>
     </>
   );
 };
@@ -83,6 +89,10 @@ const styles = StyleSheet.create({
   addCommentContainer: {
     flexDirection: "row",
     marginTop: "auto",
+  },
+  container: {
+    marginTop: "auto",
+    marginBottom: 0,
   },
   textInput: {
     flex: 1,

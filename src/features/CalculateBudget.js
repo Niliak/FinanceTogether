@@ -1,15 +1,9 @@
 import React from "react";
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Surface, ProgressBar } from "react-native-paper";
 
-import { Spacer } from "../components/spacer";
 import { history } from "../components/history";
+
 let totalCategoryExpenses = 0;
 
 export const CalculateBudget = ({ budgetCategory, budget }) => {
